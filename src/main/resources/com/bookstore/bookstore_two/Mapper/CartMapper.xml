@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace ：对应的mapper接口 -->
+<mapper namespace="com.bookstore.bookstore_two.Mapper.CartMapper">
+    <!--
+        id : 对应接口的方法名称.Cart getCartByUser(User userid);
+    -->
+    <resultMap id="cartMap" type="Cart">
+        <id column="id" property="id"></id>
+        <association property="book"
+                     select="com.bookstore.bookstore_two.Mapper.BookMapper.getBookById"
+                     column="book">
+        </association>
+        <association property="user"
+                     select="com.bookstore.bookstore_two.Mapper.UserMapper.getUserById"
+                     column="USER">
+        </association>
+    </resultMap>
+
+<select id="getCartByUser" resultMap="cartMap" >
+    SELECT id,book,USER,buyCount,price FROM t_cart where USER=#{userid}
+</select>
+
+    <update id="UpdateCart">
+        update t_cart
+        set buyCount=#{buyCount}
+        where id = #{cartItemId}
+    </update>
+
+</mapper>
