@@ -1,10 +1,12 @@
 package controller;
 
 import bean.User;
+import bean.testbean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.UserService;
 
@@ -43,4 +45,11 @@ public class UserController implements Serializable {
         return "redirect:/user/cart";
     }
 
+
+    @RequestMapping(value = "/test" ,method = RequestMethod.POST)
+    @ResponseBody
+    public String test(testbean testbean){
+        System.out.println(testbean.toString());
+        return "ok";
+    }
 }

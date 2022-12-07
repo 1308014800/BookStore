@@ -1,12 +1,18 @@
 package bean;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class User {
+    @TableId(type = IdType.AUTO)
     Integer id;
     Integer role;
+    @TableField("uname")
     String userName;
+    @TableField(value = "pwd")
     String passWord;
     String email;
 

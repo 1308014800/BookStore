@@ -30,6 +30,9 @@ spring:
           config:
             drop-table-allow: false
   mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
     static-path-pattern: /static/**
 
 
@@ -39,6 +42,22 @@ pagehelper:
   support-methods-arguments: true
   params: count=countSql
 
-mybatis:
-  config-location: classpath:configure/mybatis-configure.xml
-  mapper-locations: classpath:com.bookstore.bookstore_two.Mapper/*.xml
+#mybatis:
+##  config-location: classpath:configure/mybatis-configure.xml
+#
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+#    map-underscore-to-camel-case: true
+#  mapper-locations: classpath:com.bookstore.bookstore_two.Mapper/*.xml
+#  type-aliases-package: bean
+
+mybatis-plus:
+#  config-location: classpath:configure/mybatis-configure.xml
+
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  type-aliases-package: bean
+  global-config:
+    db-config:
+      table-prefix: t_

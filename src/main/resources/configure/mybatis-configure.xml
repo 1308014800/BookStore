@@ -13,7 +13,7 @@
         <setting name="lazyLoadingEnabled" value="false"/>
         <setting name="aggressiveLazyLoading" value="false"/>
 
-        <setting name="logImpl" value="SLF4J"/>
+<!--        <setting name="logImpl" value=" Slf4jImpl"/>-->
     </settings>
 
     <typeAliases>

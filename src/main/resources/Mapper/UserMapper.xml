@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace ：对应的mapper接口 -->
+<mapper namespace="com.bookstore.bookstore_two.Mapper.UserMapper">
+    <!--
+        id : 对应接口的方法名称.
+    -->
+    <select id="login" resultMap="User">
+        select * from t_user where uname=#{username}
+    </select>
+    <select id="getUserById" resultMap="User">
+        select * from t_user where id =#{id}
+    </select>
+    <resultMap id="User" type="user">
+        <id column="id" property="id"></id>
+        <result column="uname" property="userName"></result>
+        <result column="pwd" property="passWord"></result>
+        <result column="email" property="email"></result>
+        <result column="role" property="role"></result>
+    </resultMap>
+
+    <insert id="zhuce">
+        insert  into t_user value (null,#{uname},#{pwd},#{email},0)
+    </insert>
+
+    <delete id="ClearCarts">
+        delete  from t_cart where USER=#{id}
+    </delete>
+</mapper>
